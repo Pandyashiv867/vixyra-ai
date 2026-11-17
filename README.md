@@ -1,3 +1,13 @@
+---
+title: VIXYRA AI
+emoji: 🎬
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # VIXYRA AI
 
 Independent stick-story Shorts generator — the faceless-shorts / Tall Tale 3D
