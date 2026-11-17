@@ -1,0 +1,7 @@
+# Docker build context — keep the image clean and free of local secrets/state.
+.env
+jobs/
+node_modules/
+.git/
+*.log
+/tmp/

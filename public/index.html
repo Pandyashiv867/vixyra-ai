@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIXYRA AI — Stick-Story Shorts</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>VIXYRA AI</h1>
+    <p class="sub">True stories, told as stick-story Shorts. Type an idea — or just hit Generate and let the AI choose.</p>
+    <p id="health" class="health">Checking what can run right now…</p>
+  </header>
+
+  <!-- THE interface: one big box, one button. Nothing else to fill in. -->
+  <form id="gen-form">
+    <label for="prompt">Your story, idea, or topic</label>
+    <textarea id="prompt" rows="6" placeholder="e.g. He sold the Eiffel Tower. Twice.&#10;or: How bees pick a new home&#10;or leave it empty — “Create a video and let AI choose the story”"></textarea>
+    <button id="generate" type="submit">▶ Generate Video</button>
+    <p class="hint">60 seconds · 1080×1920 · Kokoro voice · Three.js render · real job, real MP4 — no simulation. A full render takes roughly an hour on this machine; you can watch the stages live below.</p>
+  </form>
+
+  <section id="job" hidden>
+    <h2 id="job-title">Job</h2>
+    <p id="job-status" class="status">Queued…</p>
+    <div id="stages" class="stages"></div>
+    <div class="bar"><div id="bar-fill"></div></div>
+    <p id="job-error" class="error" hidden></p>
+    <div class="actions">
+      <button id="retry" type="button" hidden>↻ Retry from failed stage</button>
+      <a id="download" class="btn" hidden>⬇ Download MP4</a>
+    </div>
+    <video id="player" controls playsinline hidden></video>
+    <h3>Contact sheet (every 0.5s — look before you trust it)</h3>
+    <img id="sheet" alt="Contact sheet — appears after the QA stage" hidden>
+    <h3>Log</h3>
+    <pre id="log">Waiting…</pre>
+  </section>
+
+  <section>
+    <h2>Recent jobs</h2>
+    <ul id="jobs" class="jobs"></ul>
+  </section>
+
+  <footer>
+    <p>Built on the faceless-shorts Tall Tale 3D workflow (see <a href="/PHASE1-STUDY.md">Phase 1 study</a> in the project). New topics need an LLM key in <code>.env</code> — without one, only the bundled template story can run, and the job will say so instead of faking a video.</p>
+  </footer>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

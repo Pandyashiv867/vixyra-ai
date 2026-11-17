@@ -1,0 +1,23 @@
+# VIXYRA AI on Render — one-click Blueprint deploy (render.yaml in this repo).
+# In the Render dashboard: New > Blueprint > connect this repo.
+# Then set LLM_API_KEY in the dashboard (free Groq key recommended — see README).
+# Plan note: the render step runs headless Chrome + voice models and needs
+# real memory. The free/starter plans (512 MB) WILL crash on renders.
+# Use Standard (2 GB) or higher. A full 60s render takes ~1h of CPU.
+services:
+  - type: web
+    name: vixyra-ai
+    runtime: docker
+    plan: standard
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: LLM_API_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_API_KEY
+        sync: false
